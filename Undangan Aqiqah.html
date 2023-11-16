@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Undangan Aqiqah</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+      background-color: #add8e6; /* Warna biru langit */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .invitation {
+      font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+      position: relative;
+      display: none;
+      color: #333; /* Warna krem */
+      background-color: #f5deb3; /* Warna krem */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transform-origin: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    #heart {
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 25px);
+      animation: heartbeat 1.5s infinite;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #add8e6; /* Warna biru langit */
+      color: #fff; /* Warna putih */
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    button:hover {
+      background-color: #98abc5; /* Warna biru langit lebih gelap */
+    }
+    /* Animasi Heart */
+    @keyframes heartbeat {
+      0% { transform: scale(0.9); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(0.9); }
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+</head>
+<body>
+  <div class="invitation">
+    <h1>Undangan Aqiqah</h1>
+    <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
+    <p>Kami mengundang Anda untuk hadir dalam acara aqiqah putra kami:</p>
+    <h2>Nama Anak</h2>
+    <p>Tanggal: 17 November 2023</p>
+    <p>Waktu: 09.00 WIB</p>
+    <p>Tempat: [Alamat]</p>
+    <p>Mohon doa restu dan kehadiran Anda.</p>
+    <p>Terima kasih,<br> [Nama Orang Tua]</p>
+    <div id="heart">❤️</div>
+  </div>
+  <button id="buttonInteract">Klik untuk Interaksi</button>
+
+  <script>
+    const buttonInteract = document.getElementById('buttonInteract');
+    const invitation = document.querySelector('.invitation');
+    const heart = document.getElementById('heart');
+
+    buttonInteract.addEventListener('click', () => {
+      gsap.to(invitation, {
+        duration: 1.5,
+        opacity: 1,
+        y: 0,
+        rotateY: 360,
+        backgroundColor: "#f9c922", /* Warna kuning (opsional) */
+        scale: 1,
+        display: 'block',
+        ease: "power4.out"
+      });
+
+      gsap.to(heart, {
+        duration: 1.5,
+        top: 20,
+        ease: "elastic.out(1, 0.3)"
+      });
+
+      gsap.from(invitation, {
+        duration: 1,
+        y: -50,
+        rotate: 0,
+        scale: 0.8,
+        ease: "back.out(1.7)"
+      });
+
+      gsap.from("h1, p", {
+        duration: 1,
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        ease: "power2.out"
+      });
+    });
+  </script>
+</body>
+</html>
